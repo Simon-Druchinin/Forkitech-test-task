@@ -1,4 +1,5 @@
 from datetime import datetime
+from decimal import Decimal
 
 from pydantic import BaseModel
 
@@ -10,8 +11,8 @@ class PaginationQueryParams(BaseModel):
 
 class TronAddressInfoSchema(BaseModel):
     address: str
-    balance: int
-    bandwidth: int
+    balance: int | Decimal
+    bandwidth: int | Decimal
     energy: int
 
 
@@ -19,6 +20,6 @@ class TronAddressInfoHistorySchema(BaseModel):
     id: int
     created_at: datetime
     address: str
-    balance: int
-    bandwidth: int
+    balance: int | Decimal
+    bandwidth: int | Decimal
     energy: int

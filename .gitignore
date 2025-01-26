@@ -12,3 +12,4 @@ env/*
 .venv
 venv/
 !env/.env.example
+!env/.test.env.example
