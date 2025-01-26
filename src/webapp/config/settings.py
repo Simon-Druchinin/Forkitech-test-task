@@ -9,9 +9,8 @@ class DBSettings(BaseModel):
     PASS: str = Field(alias="POSTGRES_PASSWORD")
 
 
-
 class Settings(BaseModel):
     db: DBSettings = DBSettings()
-    
+
 
 settings = Settings()
