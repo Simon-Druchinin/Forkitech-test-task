@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from tronpy import Tron
 
 from .models import TronAddressInfo
-from .schemas import PaginationQueryParams, TronAddressInfoSchema
+from .schemas import PaginationQueryParams, TronAddressInfoHistorySchema, TronAddressInfoSchema
 
 
 class TronService:
@@ -36,7 +36,7 @@ async def add_address_info_to_history(address_info: TronAddressInfoSchema, sessi
 async def get_paginated_history(
     pagination: PaginationQueryParams,
     session: AsyncSession,
-) -> list[TronAddressInfoSchema]:
+) -> list[TronAddressInfoHistorySchema]:
     query = select(TronAddressInfo).limit(pagination.limit).offset(pagination.offset)
     result = await session.execute(query)
-    return TypeAdapter(list[TronAddressInfoSchema]).validate_python(result.scalars().all())
+    return TypeAdapter(list[TronAddressInfoHistorySchema]).validate_python(result.scalars().all(), from_attributes=True)
