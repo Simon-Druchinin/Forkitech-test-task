@@ -9,6 +9,7 @@ app_name = "tron_api"
 class TronAddressInfo(Base):
     __tablename__ = f"{app_name}_tron_address_info"
 
+    id: Mapped[int] = mapped_column(primary_key=True)
     address: Mapped[str] = mapped_column(String)
     balance: Mapped[int] = mapped_column(Integer)
     bandwidth: Mapped[int] = mapped_column(Integer)

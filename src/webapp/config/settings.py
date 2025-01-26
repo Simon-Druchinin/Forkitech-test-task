@@ -1,7 +1,8 @@
-from pydantic import BaseModel, Field
+from pydantic import Field
+from pydantic_settings import BaseSettings
 
 
-class DBSettings(BaseModel):
+class DBSettings(BaseSettings):
     HOST: str = Field(alias="POSTGRES_HOST")
     PORT: str = Field(alias="POSTGRES_PORT")
     NAME: str = Field(alias="POSTGRES_DB")
@@ -9,7 +10,7 @@ class DBSettings(BaseModel):
     PASS: str = Field(alias="POSTGRES_PASSWORD")
 
 
-class Settings(BaseModel):
+class Settings(BaseSettings):
     db: DBSettings = DBSettings()
 
 
